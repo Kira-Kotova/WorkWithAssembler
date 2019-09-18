@@ -1,4 +1,4 @@
- {7 ïóíêò}
+{7 ïóíêò}
     {1} MOV ECX, EAX
         MOV EAX, EBX
         MOV EBX, ECX
@@ -26,9 +26,9 @@
         POP SI
         POP DI
 
-    {4} MOV ECX, SI
+    {4} MOV CX, SI
         BSWAP ECX
-        MOV ECX, DI
+        MOV CX, DI
         MOV SI, CX
         BSWAP ECX
         MOV DI, CX
@@ -40,15 +40,11 @@
 
     {2} XCHG DL, DH
 
-    {3} LEA ECX, DL
-        BSWAP ECX
-        LEA ECX, DH
-        MOV DL, [ECX]
-        BSWAPECX
-        MOV DH, [ECX]
-        POPAD
+    {3} LEA EDI, Data
+        MOV Byte Ptr[EDI+20],DH
+        MOV DH, DL
+        MOV DL, Byte Ptr[EDI+20]
 
-    {4} PUSH DL
+    {4} {PUSH DL
         MOV DL, DH
-        POP DH
-
+        POP DH}
