@@ -1,0 +1,54 @@
+ {7 ïóíêò}
+    {1} MOV ECX, EAX
+        MOV EAX, EBX
+        MOV EBX, ECX
+
+    {2} XCHG EAX, EBX
+
+    {3} PUSH EAX
+        MOV EAX, EBX
+        POP EBX
+
+    {4} LEA EDI, Data
+        MOV DWord Ptr[EDI], EAX
+        MOV EAX, EBX
+        MOV EBX, DWord Ptr[EDI]
+        
+        {8 ïóíêò}
+    {1} MOV CX, SI
+        MOV SI, DI
+        MOV DI, CX
+
+    {2} XCHG SI, DI
+
+    {3} PUSH SI
+        PUSH DI
+        POP SI
+        POP DI
+
+    {4} MOV ECX, SI
+        BSWAP ECX
+        MOV ECX, DI
+        MOV SI, CX
+        BSWAP ECX
+        MOV DI, CX
+
+        {9 ïóíêò}
+    {1} MOV CH, DH
+        MOV DH, DL
+        MOV DL, CH
+
+    {2} XCHG DL, DH
+
+    {3} LEA ECX, DL
+        BSWAP ECX
+        LEA ECX, DH
+        MOV DL, [ECX]
+        BSWAPECX
+        MOV DH, [ECX]
+        POPAD
+
+    {4} PUSH DL
+        MOV DL, DH
+        POP DH
+
